@@ -47,4 +47,7 @@ set ai
 set nobk
 set enc=utf-8
 
+if $COLORTERM == 'gnome-terminal'
+  set t_Co=256
+endif
 source ~/.vim/hybirdScheme.vim
