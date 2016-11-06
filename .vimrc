@@ -22,7 +22,8 @@ Plugin 'scrooloose/nerdtree'
 Plugin 'jistr/vim-nerdtree-tabs'
 Plugin 'kien/ctrlp.vim' " Super Search
 Plugin 'tpope/vim-fugitive' " Git integration
-Plugin 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
+" Plugin 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
+Plugin 'vim-airline/vim-airline' " Powerline devariant. 
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -45,23 +46,26 @@ nnoremap <space> za
 let g:SimpylFold_docstring_preview=1
 
 au BufNewFile,BufRead *.py
-    \ set tabstop=4
-    \ set softtabstop=4
-    \ set shiftwidth=4
-    \ set textwidth=79
-    \ set expandtab
-    \ set autoindent
-    \ set fileformat=unix
+    \ set tabstop=4 |
+    \ set softtabstop=4 |
+    \ set shiftwidth=4 |
+    \ set textwidth=79 |
+    \ set expandtab |
+    \ set autoindent |
+    \ set fileformat=unix |
 
+highlight BadWhitespace ctermbg=red guibg=darkred
 au BufRead,BufNewFile *.py,*.pyw,*.c,*.h match BadWhitespace /\s\+$/
 
 au BufNewFile,BufRead *.js, *.html, *.css
-    \ set tabstop=2
-    \ set softtabstop=2
-    \ set shiftwidth=2
+    \ set tabstop=2 |
+    \ set softtabstop=2 |
+    \ set shiftwidth=2 |
 
 let NERDTreeIgnore=['\.pyc$', '\~$'] "ignore files in NERDTree
 let python_highlight_all=1
+let g:airline_powerline_fonts = 1
+
 syntax on
 
 set nu " Line Numbering
@@ -80,6 +84,8 @@ set ai " Auto Indent: Copy indent from current line when starting a new line
 set nobk " No Backup for files
 set enc=utf-8 " Set encoding to UTF-8
 set backspace=2 " make backspace work like most other apps
+
+set guifont=Droid_Sans_Mono_Dotted_for_Powe:h12
 
 if $COLORTERM == 'gnome-terminal'
   set t_Co=256
