@@ -24,6 +24,7 @@ Plugin 'kien/ctrlp.vim' " Super Search
 Plugin 'tpope/vim-fugitive' " Git integration
 " Plugin 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
 Plugin 'vim-airline/vim-airline' " Powerline devariant. 
+Plugin 'vim-airline/vim-airline-themes'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -65,6 +66,7 @@ au BufNewFile,BufRead *.js, *.html, *.css
 let NERDTreeIgnore=['\.pyc$', '\~$'] "ignore files in NERDTree
 let python_highlight_all=1
 let g:airline_powerline_fonts = 1
+let g:airline_theme='solarized'
 
 syntax on
 
