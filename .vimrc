@@ -3,6 +3,9 @@
 set nocompatible              " required
 filetype off                  " required
 
+set renderoptions=type:directx " A workaround for FiraCode font (https://github.com/tonsky/FiraCode/issues/462)
+set encoding=utf-8
+
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
@@ -87,17 +90,28 @@ set nobk " No Backup for files
 set enc=utf-8 " Set encoding to UTF-8
 set backspace=2 " make backspace work like most other apps
 
-set guifont=Droid_Sans_Mono_Dotted_for_Powe:h12
+set guifont=Fira\ Code:h9
 
 if $COLORTERM == 'gnome-terminal'
   set t_Co=256
 endif
 
 if has('gui_running')
-  set background=dark
+  " GUI is running or is about to start.
+  " Maximize gvim window (for an alternative on Windows, see simalt below).
+  set lines=999 columns=999
+  set background=light
   colorscheme solarized
 else
+  " This is console Vim.
   colorscheme zenburn
+  if exists("+lines")
+    set lines=50
+  endif
+  if exists("+columns")
+    set columns=100
+  endif
 endif
+
 " Switch between light and dark theme
 call togglebg#map("<F5>")
