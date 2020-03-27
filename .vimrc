@@ -3,7 +3,6 @@
 set nocompatible              " required
 filetype off                  " required
 
-set renderoptions=type:directx " A workaround for FiraCode font (https://github.com/tonsky/FiraCode/issues/462)
 set encoding=utf-8
 
 " set the runtime path to include Vundle and initialize
@@ -21,17 +20,27 @@ Plugin 'scrooloose/syntastic' " Check Syntax
 Plugin 'nvie/vim-flake8' " Check code against PEP8
 Plugin 'jnurmine/Zenburn'
 Plugin 'altercation/vim-colors-solarized'
-Plugin 'scrooloose/nerdtree'
-Plugin 'jistr/vim-nerdtree-tabs'
+" Plugin 'scrooloose/nerdtree'
+" Plugin 'jistr/vim-nerdtree-tabs'
 Plugin 'kien/ctrlp.vim' " Super Search
 Plugin 'tpope/vim-fugitive' " Git integration
 " Plugin 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
 Plugin 'vim-airline/vim-airline' " Powerline devariant. 
 Plugin 'vim-airline/vim-airline-themes'
+Plugin 'sophacles/vim-processing.git' " Processing.org syntax
+Plugin 'TaDaa/vimade' " Fade inactive window plugin
+Plugin 'posva/vim-vue' " Vuejs syntax highlight
+Plugin 'cormacrelf/vim-colors-github' " github colorscheme
+Plugin 'patstockwell/vim-monokai-tasty' " Inspired by Sublime Text's interpretation of monokai
+Plugin 'camspiers/animate.vim'
+Plugin 'camspiers/lens.vim'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
+
+let g:vimade = {}
+let g:vimade.fadelevel = 0.4
 
 " Simplify navigation between split view 
 nnoremap <C-J> <C-W><C-J>
@@ -69,6 +78,7 @@ au BufNewFile,BufRead *.js, *.html, *.css
 let NERDTreeIgnore=['\.pyc$', '\~$'] "ignore files in NERDTree
 let python_highlight_all=1
 let g:airline_powerline_fonts = 1
+" let g:airline_theme = 'github'
 let g:airline_theme='solarized'
 
 syntax on
@@ -90,6 +100,10 @@ set nobk " No Backup for files
 set enc=utf-8 " Set encoding to UTF-8
 set backspace=2 " make backspace work like most other apps
 
+if !has('nvim')
+    set renderoptions=type:directx " A workaround for FiraCode font (https://github.com/tonsky/FiraCode/issues/462)
+endif
+
 set guifont=Fira\ Code:h9
 
 if $COLORTERM == 'gnome-terminal'
@@ -99,9 +113,10 @@ endif
 if has('gui_running')
   " GUI is running or is about to start.
   " Maximize gvim window (for an alternative on Windows, see simalt below).
-  set lines=999 columns=999
+  set lines=40 columns=120
   set background=light
-  colorscheme solarized
+  colorscheme vim-monokai-tasty
+" colorscheme github
 else
   " This is console Vim.
   colorscheme zenburn
